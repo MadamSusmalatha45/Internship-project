@@ -1,0 +1,25 @@
+import (
+	"fmt"
+	"github.com/katalix/go-l2tp/pppoe"
+)
+
+// Create a new PPPoE discovery connection on interface eth0
+conn, _ := pppoe.NewDiscoveryConnection("eth0")
+
+// Build a PADI packet to kick off the discovery process.
+// Add two service name tags indicating the services we're interested in.
+padi, _ := pppoe.NewPADI(conn.HWAddr(), "SuperBroadbandServiceName")
+padi.AddServiceNameTag("MegaBroadbandServiceName")
+
+// Encode the packet ready to send on the connection.
+b, _ := padi.ToBytes()
+
+// Send the packet.  Hopefully a server responds!
+conn.Send(b)
+
+// Receive any replies to our PADI packet.
+rcv, _ := conn.Recv()
+
+// Parse the received frames into PPPoE packets.
+parsed, _ := pppoe.ParsePacketBuffer(rcv)
+fmt.Printf("received: %v\n", parsed[0])
