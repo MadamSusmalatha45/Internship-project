@@ -1,0 +1,208 @@
+{
+
+
+  "name":"My Lamp",
+
+
+  "type": "thing",
+
+
+  "description": "A web connected lamp",
+
+
+  "properties": {
+
+
+    "on": {
+
+
+      "type": "boolean",
+
+
+      "description": "Whether the lamp is turned on",
+
+
+      "href": "/things/lamp/properties/on"
+
+
+    },
+
+
+    "level" : {
+
+
+      "type": "number",
+
+
+      "description": "The level of light from 0-100",
+
+
+      "minimum" : 0,
+
+
+      "maximum" : 100,
+
+
+      "href": "/things/lamp/properties/level"
+
+
+    }
+
+
+  },
+
+
+  "actions": {
+
+
+    "fade": {
+
+
+      "description": "Fade the lamp to a given level",
+
+
+      "input": {
+
+
+        "type": "object",
+
+
+        "properties": {
+
+
+          "level": {
+
+
+            "type": "number",
+
+
+            "minimum": 0,
+
+
+            "maximum": 100
+
+
+          },
+
+
+          "duration": {
+
+
+            "type": "number",
+
+
+            "unit": "milliseconds"
+
+
+          }
+
+
+        }
+
+
+      },
+
+
+      "href": "/things/lamp/actions/fade"
+
+
+    }
+
+
+  },
+
+
+  "events": {
+
+
+    "overheated": {
+
+
+      "type": "number",
+
+
+      "unit": "celsius",
+
+
+      "description": "The lamp has exceeded its safe operating temperature",
+
+
+      "href": "/things/lamp/events/overheated"
+
+
+    }
+
+
+  },
+
+
+  "links": [
+
+
+    {
+
+
+      "rel": "properties",
+
+
+      "href": "/things/lamp/properties"
+
+
+    },
+
+
+    {
+
+
+      "rel": "actions",
+
+
+      "href": "/things/lamp/actions"
+
+
+    },
+
+
+    {
+
+
+      "rel": "events",
+
+
+      "href": "/things/lamp/events"
+
+
+    },
+
+
+    {
+
+
+      "rel": "alternate",
+
+
+      "href": "wss://mywebthingserver.com/things/lamp"
+
+
+    },
+
+
+    {
+
+
+      "rel": "alternate",
+
+
+      "mediaType": "text/html",
+
+
+      "href": "/things/lamp"
+
+
+    }
+
+
+  ]
+
+
+}
